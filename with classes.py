@@ -39,7 +39,7 @@ class ReportNew():
         
 #excel_df = pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls', sheet_name='Table', skiprows=(0, 2, 3))
 
-ot3 = Report(excel_df)
+ot3 = Report(pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls', sheet_name='Table', skiprows=(0, 2, 3)))
 
 
 ot3_difference_in_percent = (((ot3.new_period_turnover() / ot3.old_period_turnover() - 1) * 100)
