@@ -12,8 +12,8 @@ class Report():
 
 class ReportOld():
     def __init__(self, file):
-        super().__init__(self, file)
-    
+        super().__init__(file)
+        self.file = file
     def old_period_turnover(self):
         ot3_old_turnover = self.file.iloc[:, 2]
         return ot3_old_turnover.values
@@ -25,7 +25,8 @@ class ReportOld():
 class ReportNew():
     def __init__(self, file):
         super().__init__(file)
-    
+        self.file = file
+        
     def new_period_turnover(self):
         ot3_new_turnover = self.file.iloc[:, 5]
         return ot3_new_turnover.values
@@ -37,9 +38,9 @@ class ReportNew():
 
         
         
-#excel_df = pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls', sheet_name='Table', skiprows=(0, 2, 3))
+excel_df = pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls', sheet_name='Table', skiprows=(0, 2, 3))
 
-ot3 = Report(pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls', sheet_name='Table', skiprows=(0, 2, 3)))
+ot3 = Report(excel_df)
 
 
 ot3_difference_in_percent = (((ot3.new_period_turnover() / ot3.old_period_turnover() - 1) * 100)
