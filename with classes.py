@@ -1,18 +1,18 @@
 import pandas as pd
 
-company_new_period = excel_df.loc[excel_df['Unnamed: 0'] == 'Цялостен резултат']
-company_new_period_value = company_new_period.iloc[:, 6].values
+#company_new_period = excel_df.loc[excel_df['Unnamed: 0'] == 'Цялостен резултат']
+#company_new_period_value = company_new_period.iloc[:, 6].values
 
 
 class Report():
-    def __init__(self, file)
+    def __init__(self, file):
         self.file = file
         self.company_new_period = file.loc[file['Unnamed: 0'] == 'Цялостен резултат']
         self.company_new_period_value = self.company_new_period.iloc[:, 6].values
 
 class ReportOld():
     def __init__(self, file):
-    super().__init__(self, file)
+        super().__init__(self, file)
     
     def old_period_turnover(self):
         ot3_old_turnover = self.file.iloc[:, 2]
@@ -24,7 +24,7 @@ class ReportOld():
     
 class ReportNew():
     def __init__(self, file):
-    super().__init__(self, file)
+        super().__init__(file)
     
     def new_period_turnover(self):
         ot3_new_turnover = self.file.iloc[:, 5]
@@ -37,7 +37,7 @@ class ReportNew():
 
         
         
-excel_df = pd.read_excel(r'C:\Users\bborisov\Desktop\Сравнение по групи за периода 23.10-29.10.xls', sheet_name='Table', skiprows=(0, 2, 3))
+#excel_df = pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls', sheet_name='Table', skiprows=(0, 2, 3))
 
 ot3 = Report(excel_df)
 
