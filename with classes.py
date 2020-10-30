@@ -11,6 +11,8 @@ class Report():
         self.company_new_period_value = self.company_new_period.iloc[:, 6].values
 
     class ReportOld():
+        def __init__(self):
+            super().__init__() 
         def old_period_turnover(self):
             ot3_old_turnover = self.file.iloc[:, 2]
             return ot3_old_turnover.values
@@ -20,6 +22,8 @@ class Report():
             return ot3_old_sold_pcs.values
     
     class ReportNew():
+        def __init__(self):
+            super().__init__() 
         def new_period_turnover(self):
             ot3_new_turnover = self.file.iloc[:, 5]
             return ot3_new_turnover.values
