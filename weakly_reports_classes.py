@@ -11,7 +11,9 @@ def show_exception_and_exit(exc_type, exc_value, tb):
     input("Press key to exit.")
     sys.exit(-1)
 
+
 sys.excepthook = show_exception_and_exit
+
 
 class Report:
     def __init__(self, file):
@@ -137,3 +139,26 @@ sold_value_without_gam_rec_new = (ot3_without_gam_rec_new / ot3_sold_pcs_without
 sold_value_without_gam_rec_old = (ot3_without_gam_rec_old / ot3_sold_pcs_without_gam_rec_old)
 
 final_print()
+
+group_choice = ''
+
+while group_choice != 'exit':
+    group_choice = input('Insert individual filter or type exit: ')
+    print()
+    group_filter = excel_df.loc[excel_df['Unnamed: 0'] == group_choice]
+    # new period
+
+    new_period = group_filter.iloc[:, 5]
+    # old period
+    old_period = group_filter.iloc[:, 2]
+    # grow
+    difference_in_percent = (((new_period / old_period) - 1) * 100).values
+    difference_in_bgn = (new_period - old_period).values
+    group_choice_percent_from_company = ((new_period / company_new_period_value) * 100).values
+
+    print(f'{group_choice} е {difference_in_percent} в %')
+    print(f'{group_choice} е {difference_in_bgn} в bgn')
+    print(f'{group_choice} е {group_choice_percent_from_company} % от Технополис')
+    print()
+    if group_choice == 'EXIT':
+        break
