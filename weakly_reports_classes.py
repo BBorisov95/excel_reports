@@ -1,5 +1,17 @@
+import sys
 import pandas as pd
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
 
+
+def show_exception_and_exit(exc_type, exc_value, tb):
+    import traceback
+    traceback.print_exception(exc_type, exc_value, tb)
+    input("Press key to exit.")
+    sys.exit(-1)
+
+sys.excepthook = show_exception_and_exit
 
 class Report:
     def __init__(self, file):
@@ -87,9 +99,8 @@ def final_print():
     print(f'За минал период сумата е била {sold_value_without_gam_rec_old}')
     print(f'{"=" * 50}')
 
-
-excel_df = pd.read_excel(r'C:\Users\Bobi\Desktop\Сравнение по групи за периода 22.10-28.10.xls',
-                         sheet_name='Table', skiprows=(0, 2, 3))
+excel_file = askopenfilename()
+excel_df = pd.read_excel(excel_file, sheet_name='Table', skiprows=(0, 2, 3))
 
 company_new_period = excel_df.loc[excel_df['Unnamed: 0'] == 'Цялостен резултат']  # catching row with specific name
 company_new_period_value = company_new_period.iloc[:, 6].values  # return values of the column
